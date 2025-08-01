@@ -3,6 +3,7 @@ package io.github.leonarddepaula.libaryapi.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.UUID;
 
@@ -30,7 +31,7 @@ public class Livro {
     private GeneroLivro genero;
 
     @Column(name = "preco", nullable = false, precision = 18, scale = 2)
-    private Double preco;
+    private BigDecimal preco;
     //private BigDecimal preco;
 
     @ManyToOne
