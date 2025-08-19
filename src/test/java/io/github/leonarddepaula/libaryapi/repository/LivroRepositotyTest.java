@@ -6,6 +6,7 @@ import io.github.leonarddepaula.libaryapi.model.Livro;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -70,6 +71,15 @@ class LivroRepositotyTest {
         //livroParaAtualizar.setTitulo("Guitar Players");
         livroParaAtualizar.setGenero(GeneroLivro.BIOGRAFIA);
         repositoty.save(livroParaAtualizar);
+    }
+
+    @Test
+    @Transactional
+    void buscarLivroTest() {
+        UUID id = UUID.fromString("952c3980-1f4b-40cd-b1c9-21483be770f6");
+        Livro livro = repositoty.findById(id).orElse(null);
+        System.out.println("Livro: " + livro.getTitulo() + "\n" + "Autor: " + livro.getAutor().getNome());
+//        System.out.println("Livro: " + livro.getTitulo());
     }
 
 }

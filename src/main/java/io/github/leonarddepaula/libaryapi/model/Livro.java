@@ -2,6 +2,7 @@ package io.github.leonarddepaula.libaryapi.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -10,6 +11,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "livro")
 @Data
+@ToString(exclude = "autor")
 public class Livro {
 
     @Id
@@ -32,9 +34,12 @@ public class Livro {
 
     @Column(name = "preco", nullable = false, precision = 18, scale = 2)
     private BigDecimal preco;
-    //private BigDecimal preco;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+
+    @ManyToOne(
+            fetch = FetchType.LAZY
+    )
+    //(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_autor")
     private Autor autor;
 }
