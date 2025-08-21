@@ -10,10 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @SpringBootTest
-class LivroRepositotyTest {
+class LivroRepositoryTest {
 
     @Autowired
     LivroRepositoty repositoty;
@@ -80,6 +81,46 @@ class LivroRepositotyTest {
         Livro livro = repositoty.findById(id).orElse(null);
         System.out.println("Livro: " + livro.getTitulo() + "\n" + "Autor: " + livro.getAutor().getNome());
 //        System.out.println("Livro: " + livro.getTitulo());
+    }
+
+    @Test
+    void pesquisaPorTituloTest() {
+        List<Livro> lista = repositoty.findByTitulo("Guerra Dos UFOs");
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisaPorIsbn() {
+        List<Livro> lista = repositoty.findByIsbn("30883-14874");
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisaPorTituloEPrecoTest() {
+        var preco = BigDecimal.valueOf(100.00);
+        var tituloPesquisa = "Guerra Dos UFOs";
+        List<Livro> lista = repositoty.findByTituloAndPreco(tituloPesquisa, preco);
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void pesquisaPorTituloOrIsbnTest() {
+        var isbn = "";
+        var titulo = "Guerra Dos UFOs";
+        List<Livro> lista = repositoty.findByTituloOrIsbn(titulo, isbn);
+        lista.forEach(System.out::println);
+    }
+
+    @Test
+    void listarLivrosComQuerryJPQL() {
+        var resultado = repositoty.listarTodosOrdenadoPorTituloAndPreco();
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarGenerosDeLivrosAutoresBrasileiros() {
+        var resultado = repositoty.ListarGenerosAutoresBrasileiros();
+        resultado.forEach(System.out::println);
     }
 
 }
