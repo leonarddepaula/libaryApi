@@ -123,4 +123,16 @@ class LivroRepositoryTest {
         resultado.forEach(System.out::println);
     }
 
+    @Test
+    void listarPorGeneroQueryParamTest() {
+        var resultado = repositoty.findByGenero(GeneroLivro.CIENCIA, "preco");
+        resultado.forEach(System.out::println);
+    }
+
+    @Test
+    void listarPorGeneroPositionalParamTest() {
+        var resultado = repositoty.findByGeneroPositionalParameters(GeneroLivro.CIENCIA, "preco");
+        resultado.forEach(System.out::println);
+    }
+
 }
