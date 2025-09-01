@@ -2,8 +2,10 @@ package io.github.leonarddepaula.libaryapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
+@EnableJpaAuditing
 public class Application {
 
     public static void main(String[] args) {
@@ -11,5 +13,5 @@ public class Application {
         SpringApplication.run(Application.class, args);
 
     }
-    
+
 }
