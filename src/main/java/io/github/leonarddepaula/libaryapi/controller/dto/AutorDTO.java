@@ -15,7 +15,7 @@ public record AutorDTO(
         @Size(min = 2, max = 100, message = "tamanho máximo de 100 caracteres!")
         String nome,
         @NotNull(message = "campo obrigatorio")
-        @Past(message = "não pode ser uma data futura!")
+        @Past(message = "não pode ser uma data futura")
         LocalDate dataNascimento,
         @NotBlank(message = "campo obrigatorio")
         @Size(min = 2, max = 50, message = "tamanho máximo de 50 caracteres!")
