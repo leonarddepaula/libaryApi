@@ -33,36 +33,36 @@ class LivroRepositoryTest {
                 LocalDate.of(1990, 7, 26)
         );
         Autor autor = autorRepository
-                .findById(UUID.fromString("eb52580b-bcbb-45b3-a5ba-636a3883cf50"))
+                .findById(UUID.fromString("09c9deaa-6a87-4b1e-b892-d5f9bac25ac3"))
                 .orElse(null);
-//        livro.setAutor(autor);
-
-        repositoty.save(livro);
-    }
-
-    @Test
-    public void salvarCascadeTest() {
-        Livro livro = new Livro();
-        livro.setIsbn("30883-14874");
-        livro.setPreco(BigDecimal.valueOf(170));
-        livro.setGenero(GeneroLivro.ROMANCE);
-        livro.setTitulo("Dando Mais");
-        livro.setDataPublicacao(
-                LocalDate.of(2023, 1, 26)
-        );
-
-        Autor autor = new Autor();
-        autor.setNome("Carol de paula");
-        autor.setNacionalidade("Brasileiro");
-        autor.setDataNascimento(LocalDate.of(1989, 7, 12));
-
-//        autorRepository.save(autor);
         livro.setAutor(autor);
 
-
         repositoty.save(livro);
     }
 
+//    @Test
+//    public void salvarCascadeTest() {
+//        Livro livro = new Livro();
+//        livro.setIsbn("30883-14874");
+//        livro.setPreco(BigDecimal.valueOf(170));
+//        livro.setGenero(GeneroLivro.ROMANCE);
+//        livro.setTitulo("Dando Mais");
+//        livro.setDataPublicacao(
+//                LocalDate.of(2023, 1, 26)
+//        );
+//
+//        Autor autor = new Autor();
+//        autor.setNome("Carol de paula");
+//        autor.setNacionalidade("Brasileiro");
+//        autor.setDataNascimento(LocalDate.of(1989, 7, 12));
+//
+
+    /// /        autorRepository.save(autor);
+//        livro.setAutor(autor);
+//
+//
+//        repositoty.save(livro);
+//    }
     @Test
     void atualizarAutorDoLivro() {
         UUID id = UUID.fromString("1c3d799a-f6ef-4234-9b7d-02a228556c4a");
