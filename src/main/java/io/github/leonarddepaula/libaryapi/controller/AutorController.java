@@ -6,6 +6,7 @@ import io.github.leonarddepaula.libaryapi.exceptions.OperacaoNaoPermitida;
 import io.github.leonarddepaula.libaryapi.exceptions.RegistroDuplicado;
 import io.github.leonarddepaula.libaryapi.model.Autor;
 import io.github.leonarddepaula.libaryapi.service.AutorService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -18,14 +19,13 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/autores")
+@RequiredArgsConstructor // para eliminar o construtor.
 // http://localhost:8080/autores
 public class AutorController {
 
     private final AutorService service;
 
-    public AutorController(AutorService service) {
-        this.service = service;
-    }
+
 
     @PostMapping
     public ResponseEntity<Object> salvar(@RequestBody AutorDTO autor) {
